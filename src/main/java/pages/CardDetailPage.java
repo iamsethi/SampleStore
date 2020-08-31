@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class OrderPage extends BasePage {
-    public OrderPage(BrowserManager browserManager) {
+public class CardDetailPage extends BasePage {
+    public CardDetailPage(BrowserManager browserManager) {
         super(browserManager);
     }
 
@@ -31,6 +31,8 @@ public class OrderPage extends BasePage {
     }
 
     public void fillCardDetails(String cardnumber, String expiry_date, String cvv_number) {
+        getElement(btn_pay_now);
+        forceWait(1);
         getElement(txt_card_number).sendKeys(cardnumber);
         getElement(txt_card_number).sendKeys(Keys.TAB);
         getElement(txt_expiry_date).sendKeys(expiry_date);
