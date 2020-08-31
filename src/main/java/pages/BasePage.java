@@ -40,4 +40,12 @@ public abstract class BasePage {
     protected WebElement waitForElement(WebElement element) {
         return fluentWait.until(driver -> getElementVisibility(element));
     }
+
+    protected void forceWait(long time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

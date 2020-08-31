@@ -9,7 +9,6 @@ public class PaymentPage extends BasePage {
     public PaymentPage(BrowserManager browserManager) {
         super(browserManager);
         getElementVisibility(bank_page);
-        driver.switchTo().frame(0);
     }
 
     @FindBy(how = How.CSS, using = ".main-container")
@@ -28,6 +27,7 @@ public class PaymentPage extends BasePage {
     private WebElement btn_resend;
 
     public void completeTransaction(String otp) {
+        driver.switchTo().frame(0);
         waitForElement(txt_password);
         txt_password.sendKeys(otp);
         getElement(btn_submit).click();
@@ -35,6 +35,7 @@ public class PaymentPage extends BasePage {
     }
 
     public void cancelTransaction() {
+        driver.switchTo().frame(0);
         waitForElement(txt_password);
         txt_password.sendKeys("");
         getElement(btn_cancel).click();

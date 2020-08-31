@@ -1,6 +1,7 @@
 package pages;
 
 import driver.BrowserManager;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
