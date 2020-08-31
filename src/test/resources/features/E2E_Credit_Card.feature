@@ -37,3 +37,18 @@ Feature: Credit Card
     Examples:
       | card_number      | expiry_date | cvv_number |
       | 4811111111111114 | 1224        | 123        |
+
+  @e2e @payment_flow @retry
+  Scenario Outline: User retry the transaction
+    And I fill the details with "<card_number>" , "<expiry_date>", "<cvv_number>"
+    And I click on pay now button
+    And I click on cancel button
+    Then I should be able to see "Transaction failed"
+    When I click on retry button
+    And I fill the details with "<card_number>" , "<expiry_date>", "<cvv_number>"
+    And I click on pay now button
+    And I enter "<bank_otp>"
+    Then I should be able to see "Transaction successful"
+    Examples:
+      | card_number      | expiry_date | cvv_number | bank_otp |
+      | 4811111111111114 | 1224        | 123        | 112233   |
