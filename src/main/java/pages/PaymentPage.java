@@ -1,6 +1,7 @@
 package pages;
 
 import driver.BrowserManager;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -37,7 +38,8 @@ public class PaymentPage extends BasePage {
     public void cancelTransaction() {
         driver.switchTo().frame(0);
         waitForElement(txt_password);
-        txt_password.sendKeys("");
+        txt_password.sendKeys("111111");
+        txt_password.sendKeys(Keys.TAB);
         getElement(btn_cancel).click();
         driver.switchTo().defaultContent();
     }

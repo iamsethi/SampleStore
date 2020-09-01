@@ -26,7 +26,10 @@ public class FirefoxManager implements Controller {
     }
 
     public void setupController() {
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
+        if (System.getProperty("os.name").toLowerCase().indexOf("mac") >= 0)
+            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver_mac");
+        else
+            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver");
         this.driver = new FirefoxDriver();
     }
 }

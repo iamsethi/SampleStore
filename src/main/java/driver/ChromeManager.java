@@ -26,7 +26,10 @@ public class ChromeManager implements Controller {
     }
 
     public void setupController() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
+        if (System.getProperty("os.name").toLowerCase().indexOf("mac") >= 0)
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver_mac");
+        else
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
         this.driver = new ChromeDriver();
     }
 }

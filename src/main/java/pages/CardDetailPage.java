@@ -26,13 +26,16 @@ public class CardDetailPage extends BasePage {
     @FindBy(how = How.CSS, using = ".button-main-content")
     private WebElement btn_pay_now;
 
+    @FindBy(how = How.CSS, using = ".notice.success")
+    private WebElement lbl_notice_success;
+
     public void payWithCard() {
         getElement(btn_pay_by_credit_card).click();
     }
 
     public void fillCardDetails(String cardnumber, String expiry_date, String cvv_number) {
-        getElement(btn_pay_now);
-        forceWait(1);
+        forceWait(2);
+        getElementVisibility(lbl_notice_success);
         getElement(txt_card_number).sendKeys(cardnumber);
         getElement(txt_card_number).sendKeys(Keys.TAB);
         getElement(txt_expiry_date).sendKeys(expiry_date);
